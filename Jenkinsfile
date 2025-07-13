@@ -26,7 +26,7 @@ node {
     stage('Build Docker Image') {
     // Optional: create index.html dynamically
     sh '''
-    cat <<EOF > index.html
+    cat <<EOF > src/main/resources/static/index.html
     <html>
       <head><title>My App</title></head>
       <body><h1>Hello from Jenkins Pipeline!</h1></body>
