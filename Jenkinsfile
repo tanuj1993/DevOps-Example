@@ -24,10 +24,16 @@ node {
     }
 		
     stage('Build Docker Image') {
-      // build docker image
-      dockerImage = docker.build("devopsexample:${env.BUILD_NUMBER}")
-    }
-   	  
+    // Optional: create index.html dynamically
+    sh '''
+    cat <<EOF > index.html
+    <html>
+      <head><title>My App</title></head>
+      <body><h1>Hello from Jenkins Pipeline!</h1></body>
+    </html>
+    EOF
+    '''
+    }   	  
     stage('Deploy Docker Image and login'){
       
       echo "Docker Image Tag Name: ${dockerImageTag}"
